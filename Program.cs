@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CA220324
@@ -36,14 +37,171 @@ namespace CA220324
             //Feladat_1_29();
             //Feladat_1_30();
 
-            Feladat_1_31();
+            //Feladat_1_31();
+            //Feladat_1_32();
+            //Feladat_1_33();
+            //Feladat_1_34();
 
+            //HF: 35, 37, 38, 39, 40
+
+            //Feladat_1_36();
+
+            //--------------------
+
+            //Feladat_2_01();
+            //Feladat_2_02();
+            //Feladat_2_03();
+            //Feladat_bonusz();
+            //Feladat_2_04();
+
+            //HF: mind
+
+            Feladat_2_szinek();
             Console.ReadKey();
+        }
+
+        private static void Feladat_2_szinek()
+        {
+            //ConsoleColor szin = (ConsoleColor)13;
+
+            ConsoleColor szin = ConsoleColor.Magenta;
+
+            Console.ForegroundColor = szin;
+
+            Console.WriteLine("ROZSASZÍÍÍÍÍN <3 ^^");
+        }
+
+        private static void Feladat_2_04()
+        {
+            Console.CursorVisible = false;
+
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            string nev = "Juhasz Zoltan";
+            int szelesseg = Console.WindowWidth - nev.Length;
+            int magassag = Console.WindowHeight;
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.SetCursorPosition(
+                    left: rnd.Next(szelesseg),
+                    top: rnd.Next(magassag));
+                Console.Write(nev);
+                Thread.Sleep(1000);
+                Console.Clear();
+            }
+        }
+
+        private static void Feladat_bonusz()
+        {
+            for (int i = 0; i < 10000; i++)
+            {
+                int x = rnd.Next(Console.WindowWidth);
+                int y = rnd.Next(Console.WindowHeight);
+
+                Console.SetCursorPosition(x, y);
+
+                Console.ForegroundColor = (ConsoleColor)rnd.Next(16);
+                Console.BackgroundColor = (ConsoleColor)rnd.Next(16);
+                Console.Write("X");
+                //Thread.Sleep(100);
+            }
+        }
+
+        private static void Feladat_2_03()
+        {
+            for (int i = 10; i >= 1; i--)
+            {
+                Console.WriteLine($"{i}...");
+                Thread.Sleep(300);
+                Console.Clear();
+            }
+            Console.WriteLine("viszont látásra!");
+            Thread.Sleep(3000);
+        }
+
+        private static void Feladat_2_02()
+        {
+            Console.Write("írj be egy számot: ");
+            int n = int.Parse(Console.ReadLine());
+
+            Console.Write("írj be egy szöveget: ");
+            string s = Console.ReadLine();
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"{s} ");
+            }
+            Console.Write("\n");
+        }
+
+        private static void Feladat_2_01()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine($"{i + 1, 2}. Zoli");
+            }
+        }
+
+        private static void Feladat_1_36()
+        {
+            int szam = rnd.Next(1000001);
+            if (szam / 1000000 >= 1)
+                Console.WriteLine("7 számjegyű");
+            else if (szam / 100000 >= 1)
+                Console.WriteLine("6 számjegyű");
+            else if (szam / 10000 >= 1)
+                Console.WriteLine("5 számjegyű");
+            else if (szam / 1000 >= 1)
+                Console.WriteLine("4 számjegyű");
+            else if (szam / 100 >= 1)
+                Console.WriteLine("3 számjegyű");
+            else if (szam / 10 >= 1)
+                Console.WriteLine("2 számjegyű");
+            else
+                Console.WriteLine("1 számjegyű");
+
+        }
+
+        private static void Feladat_1_34()
+        {
+            int paros = rnd.Next(0, 50) * 2;
+            Console.WriteLine(paros);
+        }
+
+        private static void Feladat_1_33()
+        {
+            int e = rnd.Next(15, 26);
+            double t = 15 + rnd.NextDouble() * 10;
+
+            Console.WriteLine(e);
+            Console.WriteLine(t);
+
+            double t2 = rnd.Next(150, 251) / 10d;
+
+            Console.WriteLine(t2);
+        }
+
+        private static void Feladat_1_32()
+        {
+            int randomEgesz = rnd.Next(26);
+            Console.WriteLine(randomEgesz);
+
+            double randomTort = rnd.NextDouble() * 25;
+            Console.WriteLine(randomTort);
         }
 
         private static void Feladat_1_31()
         {
-            Console.WriteLine(rnd.Next(100, 1000));
+            int veletlen_1 = rnd.Next(100, 1000);
+            //int veletlen_2 = rnd.Next(2, 768);
+            Console.WriteLine(veletlen_1);
+            //Console.WriteLine(veletlen_2);
+
+            int veletlen_3 = rnd.Next();
+            int veletlen_4 = rnd.Next(100);
+            int veletlen_5 = rnd.Next(-40, 41);
+
         }
 
         private static void Feladat_1_30()
