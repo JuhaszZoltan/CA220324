@@ -56,8 +56,248 @@ namespace CA220324
 
             //HF: mind
 
-            Feladat_2_szinek();
+            //Feladat_2_szinek();
+
+            //Feladat_2_05();
+            //Feladat_2_06();
+            //Feladat_2_07();
+            //Feladat_2_08();
+            //Feladat_2_09();
+            //Feladat_2_10();
+
+            //Feladat_2_11();
+            //Feladat_2_12();
+            //Feladat_2_13();
+            //Feladat_2_14();
+            //HF: 15-20
+            //Feladat_2_21();
+            //Feladat_2_char();
+            //Feladat_2_22();
+            //Felada_2_22_b();
+
+            Feladat_2_23();
+
             Console.ReadKey();
+        }
+
+        private static void Feladat_2_23()
+        {
+            int hatosDobasokSzama = 0;
+
+            for (int i = 0; i < 100; i++)
+            {
+                int dobas = rnd.Next(1, 7);
+                if (dobas == 6) hatosDobasokSzama++;
+            }
+
+            Console.WriteLine($"6os dobások száma: {hatosDobasokSzama}");
+        }
+
+        private static void Felada_2_22_b()
+        {
+            Console.Write("írj be egy számot: ");
+            int n = int.Parse(Console.ReadLine());
+
+            Console.WriteLine($"{n}! = {Faktorialis(n)}");
+        }
+
+        private static int Faktorialis(int n)
+        {
+            if (n == 1) return 1;
+            else return n * Faktorialis(n - 1);
+        }
+
+        private static void Feladat_2_22()
+        {
+            Console.Write("írj be egy számot: ");
+            int n = int.Parse(Console.ReadLine());
+
+            int nFakt = 1;
+            for (int i = 2; i <= n; i++)
+            {
+                //nFakt = nFakt * i;
+                nFakt *= i;
+            }
+
+            Console.WriteLine($"{n}! = {nFakt}");
+        }
+
+        private static void Feladat_2_char()
+        {
+            int szam = 1234;
+
+            string szamAlak = szam.ToString();
+
+            Console.WriteLine(szam);
+            Console.WriteLine(szamAlak);
+
+            char szamAlakElsoJegye = szamAlak[0];
+            Console.WriteLine(szamAlakElsoJegye);
+
+            Console.WriteLine(szamAlakElsoJegye * 10);
+
+            string szamAlakElsoJegyeString = szamAlakElsoJegye.ToString();
+
+            int visszaAlakitvaAzElsoJegy = int.Parse(szamAlakElsoJegyeString);
+
+            Console.WriteLine(visszaAlakitvaAzElsoJegy * 10);
+        }
+
+        private static void Feladat_2_21()
+        {
+            //for (int i = 100; i < 1000; i++)
+            //{
+            //    int e = i % 10;
+            //    int t = i % 100 / 10;
+            //    int s = i / 100;
+
+            //    if (i == Math.Pow(s, 3) + Math.Pow(t, 3) + Math.Pow(e, 3))
+            //    {
+            //        Console.WriteLine(i);
+            //    }
+            //}
+
+            for (int i = 100; i < 1000; i++)
+            {
+                string szam = $"{i}";
+
+                if (i == 
+                    Math.Pow(int.Parse(szam[0].ToString()), 3) + 
+                    Math.Pow(int.Parse(szam[1].ToString()), 3) + 
+                    Math.Pow(int.Parse(szam[2].ToString()), 3))
+                {
+                    Console.WriteLine(szam);
+                }
+            }
+        }
+
+        private static void Feladat_2_14()
+        {
+            for (int i = -30; i <= 30; i++)
+            {
+                Console.WriteLine($"{i}°C = {i*1.8 + 32}°F");
+            }
+        }
+
+        private static void Feladat_2_13()
+        {
+            Console.Write("sorozat n. tagja: ");
+            int n11 = int.Parse(Console.ReadLine());
+            Console.Write("sorozat n + 1. tagja: ");
+            int n12 = int.Parse(Console.ReadLine());
+
+            int d = n12 - n11;
+
+            Console.WriteLine("előző 10 tag:");
+            for (int i = 10; i >= 1; i--)
+            {
+                Console.Write($"{n11 - d * i}, ");
+            }
+
+            Console.WriteLine("\nkövetkező 10 tag:");
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.Write($"{n12 + d * i}, ");
+            }
+        }
+
+        private static void Feladat_2_12()
+        {
+            Console.Write("számtani sorozat első tagja: ");
+            int elsoTag = int.Parse(Console.ReadLine());
+
+            Console.Write("számtani sorozat diferenciálja: ");
+            int d = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("első 20 tag:");
+            for (int i = 0; i < 20; i++)
+            {
+                Console.Write($"{elsoTag + i * d}, ");
+            }
+        }
+
+        private static void Feladat_2_11()
+        {
+            //for (int i = 10; i <= 10+50*7;i += 7)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+            for (int i = 0; i < 50; i++)
+            {
+                Console.WriteLine(10 + i * 7);
+            }
+        }
+
+        private static void Feladat_2_10()
+        {
+            for (int i = 99; i >= 1; i -= 2)
+            {
+                Console.WriteLine(i);
+            }
+
+            //for (int i = 1; i <= 99; i += 2)
+            //{
+            //    Console.WriteLine(100 - i);
+            //}
+        }
+
+        private static void Feladat_2_09()
+        {
+            //for (int i = 0; i <= 100; i++)
+            //{
+            //    if (i % 2 == 1) Console.WriteLine(i);
+            //}
+
+            //for (int i = 1; i <= 100; i += 2)
+            //{
+            //    Console.WriteLine(i);
+            //}
+
+            for (int i = 0; i < 50; i++)
+            {
+                Console.WriteLine(2 * i + 1);
+            }
+        }
+
+        private static void Feladat_2_08()
+        {
+            for (int i = 0; i < 30; i++)
+            {
+                Console.WriteLine($"2^{i, 2} = {Math.Pow(2, i), 9}");
+            }
+        }
+
+        private static void Feladat_2_07()
+        {
+            for (int i = 0; i <= 30; i++)
+            {
+                Console.WriteLine(i * i);
+            }
+        }
+
+        private static void Feladat_2_06()
+        {
+            for (int i = 0; i < 200; i++)
+            {
+                Console.ForegroundColor = (ConsoleColor)rnd.Next(16);
+
+                Console.SetCursorPosition(
+                    left: rnd.Next(Console.WindowWidth),
+                    top: rnd.Next(Console.WindowHeight));
+                Console.Write("*");
+            }
+        }
+
+        private static void Feladat_2_05()
+        {
+            for (int i = 0; i < 200; i++)
+            {
+                Console.SetCursorPosition(
+                    left: rnd.Next(Console.WindowWidth),
+                    top: rnd.Next(Console.WindowHeight));
+                Console.Write("*");
+            }
         }
 
         private static void Feladat_2_szinek()
