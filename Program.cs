@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace CA220324
 {
+    internal class Tanulo
+    {
+        public string nev;
+        public int[] magyarJegyek = new int[100];
+        public int jegyekSzam = 0;
+    }
     internal class Program
     {
         static Random rnd = new Random();
@@ -74,12 +80,313 @@ namespace CA220324
             //Feladat_2_char();
             //Feladat_2_22();
             //Felada_2_22_b();
+            //Feladat_2_23();
 
-            Feladat_2_23();
+            //Feladat_2_24();
+            //Feladat_2_25();
+            //Feladat_2_26();
+            //Feladat_2_27();
+            //Feladat_2_28();
+
+            //Feladat_2_32_a();
+            //Feladat_2_32_b();
+            //Feladat_2_33();
+
+            //--------------------
+
+            //Feladat_3_00_1();
+            //Feladat_3_00_2();
+
+            Feladat_3_01();
 
             Console.ReadKey();
         }
 
+        private static void Feladat_3_01()
+        {
+            string[] nevek = 
+            {
+                /* 0: */ "Peti",
+                /* 1: */ "Jani",
+                /* 2: */ "Feri",
+                /* 3: */ "Lajos",
+                /* 4: */ "Kálmán",
+            };
+
+            for (int i = 0; i < nevek.Length; i++)
+            {
+                Console.WriteLine(nevek[i]);
+            }
+
+            int[] magassagok = new int[5];
+
+            for (int i = 0; i < magassagok.Length; i++)
+            {
+                Console.Write($"{nevek[i]} magassága: ");
+                magassagok[i] = int.Parse(Console.ReadLine());
+            }
+
+            //int magassagokOsszege = 0;
+            //for (int i = 0; i < magassagok.Length; i++)
+            //{
+            //    magassagokOsszege += magassagok[i];
+            //}
+            //Console.WriteLine($"átlagmagasság: {magassagokOsszege / (float)magassagok.Length}");
+
+            double atlagMagassag = magassagok.Average();
+            Console.WriteLine($"átlagmagasság: {atlagMagassag} cm");
+
+            Array.Sort(nevek, magassagok);
+
+            Console.WriteLine("nevek rendezve:");
+            for (int i = 0; i < nevek.Length; i++)
+            {
+                Console.WriteLine(nevek[i]);
+            }
+
+            int legnagyobbMagassag = magassagok.Max();
+            int legnagyobbMagassagIndex = Array.IndexOf(magassagok, legnagyobbMagassag);
+            string legmagasabbNeve = nevek[legnagyobbMagassagIndex];
+
+            Console.WriteLine($"a legmagasabb {legmagasabbNeve} ({legnagyobbMagassag} cm)");
+
+            Array.Sort(magassagok, nevek);
+
+            for (int i = 0; i < nevek.Length; i++)
+            {
+                Console.WriteLine($"{nevek[i]}: {magassagok[i]}");
+            }
+        }
+
+        private static void Feladat_3_00_2()
+        {
+            int[] t = new int[5];
+
+            for (int i = 0; i < t.Length; i++)
+            {
+                t[i] = rnd.Next(10, 100);
+            }
+
+            for (int i = 0; i < t.Length; i++)
+            {
+                Console.Write($"{t[i]} ");
+            }
+            Console.Write("\n");
+
+            Array.Sort(t);
+
+            for (int i = 0; i < t.Length; i++)
+            {
+                Console.Write($"{t[i]} ");
+            }
+            Console.Write("\n");
+
+            Array.Reverse(t);
+
+            for (int i = 0; i < t.Length; i++)
+            {
+                Console.Write($"{t[i]} ");
+            }
+            Console.Write("\n");
+
+            Array.Resize(ref t, 7);
+
+            for (int i = 0; i < t.Length; i++)
+            {
+                Console.Write($"{t[i]} ");
+            }
+            Console.Write("\n");
+
+            Array.Resize(ref t, 3);
+
+            for (int i = 0; i < t.Length; i++)
+            {
+                Console.Write($"{t[i]} ");
+            }
+            Console.Write("\n");
+
+            Tanulo legjobbDiak = new Tanulo();
+            legjobbDiak.nev = "Imola";
+            legjobbDiak.magyarJegyek[legjobbDiak.jegyekSzam] = 5;
+            legjobbDiak.jegyekSzam++;
+            legjobbDiak.magyarJegyek[legjobbDiak.jegyekSzam] = 4;
+            legjobbDiak.jegyekSzam++;
+
+            Console.WriteLine($"{legjobbDiak.nev} első jegye magyarból {legjobbDiak.magyarJegyek[0]}");
+
+            int sum = 0;
+            for (int i = 0; i < legjobbDiak.jegyekSzam; i++)
+            {
+                sum += legjobbDiak.magyarJegyek[i];
+            }
+            Console.WriteLine($"átlaga: {sum / (float)legjobbDiak.jegyekSzam}");
+
+            bool vanE5ose = legjobbDiak.magyarJegyek.Contains(5);
+            if (vanE5ose)
+            {
+                Console.WriteLine($"{legjobbDiak.nev}nak van 5öse!!");
+            }
+            else
+            {
+                Console.WriteLine($"{legjobbDiak.nev}nak nincs 5öse :(((((");
+            }
+
+            int elemekOsszege = t.Sum();
+            Console.WriteLine($" t tömb elemeinek össszege: {elemekOsszege}");
+
+            Console.WriteLine($"elemek átlaga: {t.Average()}");
+
+            Console.WriteLine($"elemek átlaga: {t.Min()}");
+
+            Console.Write("írd be a keresett számot: ");
+            int keresettSzam = int.Parse(Console.ReadLine());
+
+            int szamIndexe = Array.IndexOf(t, keresettSzam);
+
+            Console.WriteLine($"keresett szám indexe: {szamIndexe}");
+        }
+        private static void Feladat_3_00_1()
+        {
+            //tömb || vektor || array
+
+            //tömbök deklarálása és inicializálása
+            int[] egeszSzamok = new int[10];
+            string[] nevek = new string[] { "András", "Béla", "Cecil" };
+            double[] lebegopontosSzamok = { 3.14, 1.22, 42.5, 100.0 };
+
+            string[] ures = new string[3];
+
+            //a tömb 0ás indexű elemének felülírása
+
+            egeszSzamok[5] = 42;
+            for (int i = 0; i < egeszSzamok.Length; i++)
+            {
+                Console.WriteLine(egeszSzamok[i]);
+            }
+
+            for (int i = 0; i < ures.Length; i++)
+            {
+                Console.WriteLine($"ures {i}. eleme:{ures[i]}");
+            }
+
+            ures[1] = "bableves";
+
+            for (int i = 0; i < ures.Length; i++)
+            {
+                Console.WriteLine(ures[i]);
+            }
+                
+        }
+        private static void Feladat_2_33()
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                for (int j = 1; j <= 10; j++)
+                {
+                    if (i * j % 10 == 0)
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                    if (i == j)
+                        Console.ForegroundColor = ConsoleColor.Red;
+                    if (j == 1 || i == 1)
+                        Console.ForegroundColor = ConsoleColor.Green;
+
+                    Console.Write($"{i * j, 3} ");
+                    Console.ResetColor();
+                }
+                Console.Write('\n');
+            }
+        }
+        private static void Feladat_2_32_b()
+        {
+            string s = "VAKÁCIÓ";
+            for (int i = 0; i < s.Length; i++)
+            {
+                for (int j = i; j < s.Length - 1; j++)
+                {
+                    Console.Write(" ");
+                }
+                for (int j = s.Length - 1 - i; j <= s.Length - 1; j++)
+                {
+                    Console.Write(s[j]);
+                }
+                Console.Write("\n");
+            }
+        }
+        private static void Feladat_2_32_a()
+        {
+            string s = "VAKÁCIÓ";
+            for (int i = 0; i < s.Length; i++)
+            {
+                for (int j = i; j < s.Length; j++)
+                {
+                    Console.Write(s[j]);
+                }
+                Console.Write("\n");
+            }
+        }
+        private static void Feladat_2_28()
+        {
+            string nev = "Juhasz Zoltan";
+
+            for (int i = 0; i < nev.Length; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    Console.Write(" ");
+                }
+                Console.WriteLine(nev[i]);
+            }
+        }
+        private static void Feladat_2_27()
+        {
+            Console.Write("írj be valamit: ");
+            string szoveg = Console.ReadLine();
+
+            for (int i = szoveg.Length - 1; i >= 0; i--)
+            {
+                Console.Write(szoveg[i]);
+            }
+        }
+        private static void Feladat_2_26()
+        {
+            int sum = 0;
+            for (int i = 0; i < 100; i++)
+            {
+                sum += rnd.Next(1, 7);
+            }
+            Console.WriteLine($"100 db dobókocka dubásainak összege: {sum}");
+        }
+        private static void Feladat_2_25()
+        {
+            int sum = 0;
+            for (int szam = 0; szam < 100; szam++)
+            {
+                sum += szam;
+            }
+            Console.WriteLine($"első 100 természetes sám összege: {sum}");
+        }
+        private static void Feladat_2_24()
+        {
+            //int tizenKettoOsszegDB = 0;
+            //for (int i = 0; i < 20; i++)
+            //{
+            //    int d1 = rnd.Next(1, 7);
+            //    int d2 = rnd.Next(1, 7);
+            //    int sum = d1 + d2;
+            //    if (sum == 12)
+            //    {
+            //        tizenKettoOsszegDB++;
+            //    }
+            //}
+            //Console.WriteLine($"{tizenKettoOsszegDB} alkalommal lett a dobások összege 12");
+
+            int c = 0;
+            for (int i = 0; i < 20; i++)
+            {
+                if (rnd.Next(1, 7) + rnd.Next(1, 7) == 12) c++;
+            }
+            Console.WriteLine($"{c} alkalommal lett a két dobás összege 12");
+        }
         private static void Feladat_2_23()
         {
             int hatosDobasokSzama = 0;
@@ -92,7 +399,6 @@ namespace CA220324
 
             Console.WriteLine($"6os dobások száma: {hatosDobasokSzama}");
         }
-
         private static void Felada_2_22_b()
         {
             Console.Write("írj be egy számot: ");
@@ -100,13 +406,11 @@ namespace CA220324
 
             Console.WriteLine($"{n}! = {Faktorialis(n)}");
         }
-
         private static int Faktorialis(int n)
         {
             if (n == 1) return 1;
             else return n * Faktorialis(n - 1);
         }
-
         private static void Feladat_2_22()
         {
             Console.Write("írj be egy számot: ");
@@ -121,7 +425,6 @@ namespace CA220324
 
             Console.WriteLine($"{n}! = {nFakt}");
         }
-
         private static void Feladat_2_char()
         {
             int szam = 1234;
@@ -142,7 +445,6 @@ namespace CA220324
 
             Console.WriteLine(visszaAlakitvaAzElsoJegy * 10);
         }
-
         private static void Feladat_2_21()
         {
             //for (int i = 100; i < 1000; i++)
@@ -170,7 +472,6 @@ namespace CA220324
                 }
             }
         }
-
         private static void Feladat_2_14()
         {
             for (int i = -30; i <= 30; i++)
@@ -178,7 +479,6 @@ namespace CA220324
                 Console.WriteLine($"{i}°C = {i*1.8 + 32}°F");
             }
         }
-
         private static void Feladat_2_13()
         {
             Console.Write("sorozat n. tagja: ");
@@ -200,7 +500,6 @@ namespace CA220324
                 Console.Write($"{n12 + d * i}, ");
             }
         }
-
         private static void Feladat_2_12()
         {
             Console.Write("számtani sorozat első tagja: ");
@@ -215,7 +514,6 @@ namespace CA220324
                 Console.Write($"{elsoTag + i * d}, ");
             }
         }
-
         private static void Feladat_2_11()
         {
             //for (int i = 10; i <= 10+50*7;i += 7)
