@@ -106,12 +106,101 @@ namespace CA220324
             //Feladat_3_4_a();
             //Feladat_3_4_b();
             //Feladat_3_4_c();
+            //Feladat_3_5();
+            //Feladat_3_6();
 
-            Feladat_3_5();
+            //OM: 7
+
+            Feladat_lotto();
+
+            //HF 8, 9, 10, 11, 12
 
             Console.ReadKey();
         }
 
+        private static void Feladat_lotto()
+        {
+            int[] tippek = new int[5];
+
+            Console.WriteLine("=== 5ös lottó emu ===");
+            Console.WriteLine("add meg a tippjeidet!");
+            for (int i = 0; i < tippek.Length; )
+            {
+                Console.Write($"{i + 1}. tipp: ");
+                int tipp = int.Parse(Console.ReadLine());
+
+                if (tipp < 1 || tipp > 90)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("csak 1 és 90 közötti lehet a tipped!");
+                    Console.ResetColor();
+                }
+                else if (tippek.Contains(tipp))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Ez a szám már volt!");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    tippek[i] = tipp;
+                    i++;
+                }
+            }
+
+            int[] nyeroszamok = new int[5];
+            for (int i = 0; i < nyeroszamok.Length; )
+            {
+                int nyeroszam = rnd.Next(1, 91);
+                if (!nyeroszamok.Contains(nyeroszam))
+                {
+                    nyeroszamok[i] = nyeroszam;
+                    i++;
+                }
+            }
+
+            Array.Sort(tippek);
+            Console.Write("tippjeid: ");
+            for (int i = 0; i < tippek.Length; i++)
+                Console.Write($"{tippek[i]} ");
+            Console.Write('\n');
+
+            Array.Sort(nyeroszamok);
+            Console.Write("nyerőszámok: ");
+            for (int i = 0; i < nyeroszamok.Length; i++)
+                Console.Write($"{nyeroszamok[i]} ");
+            Console.Write('\n');
+
+            int talalatokSzama = 0;
+            for (int i = 0; i < tippek.Length; i++)
+            {
+                if (nyeroszamok.Contains(tippek[i]))
+                    talalatokSzama++;
+            }
+            Console.WriteLine($"Összesen {talalatokSzama} találatod volt!");
+            if (talalatokSzama > 0)
+                Console.WriteLine("grat!");
+            else Console.WriteLine(":(");
+        }
+
+        private static void Feladat_3_6()
+        {
+            int[] t = new int[50];
+            int lefutas = 0;
+            for (int i = 0; i < t.Length; )
+            {
+                int szam = rnd.Next(10, 100);
+                if (!t.Contains(szam))
+                {
+                    t[i] = szam;
+                    Console.Write($"{t[i]} ");
+                    if ((i + 1) % 10 == 0) Console.Write('\n');
+                    i++;
+                }
+                lefutas++;
+            }
+            Console.WriteLine($"\nlefutások száma: x{lefutas}");
+        }
         private static void Feladat_3_5()
         {
             int[] t = new int[50];
@@ -135,23 +224,20 @@ namespace CA220324
                 Console.WriteLine("nincs benne a 13");
             }
         }
-
         private static void Feladat_3_4_c()
         {
             List<string> nevek = new List<string>();
-            int db = 0;
             string nev = null;
             do
             {
-                Console.Write($"{db + 1,2}. név: ");
+                Console.Write($"{nevek.Count + 1,2}. név: ");
                 nev = Console.ReadLine();
                 if (!string.IsNullOrEmpty(nev))
-                {
                     nevek.Add(nev);
-                    db++;
-                }
-            } while (!string.IsNullOrEmpty(nev) && db < 10);
+            } while (!string.IsNullOrEmpty(nev) && nevek.Count < 10);
+            
             Console.WriteLine("vége a bekérésnek");
+            
             nevek.Sort();
 
             foreach (string n in nevek)
