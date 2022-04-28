@@ -97,11 +97,194 @@ namespace CA220324
             //Feladat_3_00_1();
             //Feladat_3_00_2();
 
-            Feladat_3_01();
+            //Feladat_3_01();
+            //Feladat_3_matrix();
+            //Feladat_3_2();
+
+            //HF: 3, 
+
+            //Feladat_3_4_a();
+            //Feladat_3_4_b();
+            //Feladat_3_4_c();
+
+            Feladat_3_5();
 
             Console.ReadKey();
         }
 
+        private static void Feladat_3_5()
+        {
+            int[] t = new int[50];
+
+            for (int i = 0; i < t.Length; i++)
+            {
+                t[i] = rnd.Next(5, 50) * 2 + 1;
+
+                if(t[i] == 13) Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write($"{t[i]} ");
+                Console.ResetColor();
+                if ((i + 1) % 10 == 0) Console.Write("\n");
+            }
+
+            if (t.Contains(13))
+            {
+                Console.WriteLine("benne van a 13");
+            }
+            else
+            {
+                Console.WriteLine("nincs benne a 13");
+            }
+        }
+
+        private static void Feladat_3_4_c()
+        {
+            List<string> nevek = new List<string>();
+            int db = 0;
+            string nev = null;
+            do
+            {
+                Console.Write($"{db + 1,2}. név: ");
+                nev = Console.ReadLine();
+                if (!string.IsNullOrEmpty(nev))
+                {
+                    nevek.Add(nev);
+                    db++;
+                }
+            } while (!string.IsNullOrEmpty(nev) && db < 10);
+            Console.WriteLine("vége a bekérésnek");
+            nevek.Sort();
+
+            foreach (string n in nevek)
+            {
+                Console.WriteLine(n);
+            }
+
+            Console.WriteLine("vége a feladatnak");
+        }
+        private static void Feladat_3_4_b()
+        {
+            string[] nevek = new string[10];
+            int hossz = 0;
+
+            for (int i = 0; i < nevek.Length; i++)
+            {
+                Console.Write($"{i + 1,2}. név: ");
+                string aktNev = Console.ReadLine();
+
+                if (aktNev != "")
+                {
+                    nevek[i] = aktNev;
+                    hossz++;
+                }
+                else
+                {
+                    Console.WriteLine("vége az adatbekérésnek!");
+                    i = nevek.Length;
+                }
+            }
+
+            Array.Resize(ref nevek, hossz);
+            Array.Sort(nevek);
+            for (int i = 0; i < nevek.Length; i++)
+            {
+                Console.WriteLine(nevek[i]);
+            }
+            Console.WriteLine("itt a vége");
+        }
+        private static void Feladat_3_4_a()
+        {
+            //számolom a 'valódi' hosszt:
+            string[] nevek = new string[10];
+            int hossz = 0;
+
+            for (int i = 0; i < nevek.Length; i++)
+            {
+                Console.Write($"{i + 1, 2}. név: ");
+                string aktNev = Console.ReadLine();
+
+                if (aktNev != "")
+                {
+                    nevek[i] = aktNev;
+                    hossz++;
+                }
+                else
+                {
+                    Console.WriteLine("vége az adatbekérésnek!");
+                    i = nevek.Length;
+                }
+            }
+
+            Array.Sort(nevek);
+            for (int i = nevek.Length - hossz; i < nevek.Length; i++)
+            {
+                Console.WriteLine(nevek[i]);
+            }
+            Console.WriteLine("itt a vége");
+        }
+        private static void Feladat_3_2()
+        {
+            int[] t = new int[20];
+
+            for (int i = 0; i < t.Length; i++)
+                Console.Write($"{t[i]} ");
+            Console.Write('\n');
+
+
+            for (int i = 0; i < t.Length; i++)
+            {
+                t[i] = rnd.Next(50, 151);
+            }
+
+            for (int i = 0; i < t.Length; i++)
+                Console.Write($"{t[i]} ");
+            Console.Write('\n');
+
+            Array.Sort(t);
+
+            for (int i = 0; i < t.Length; i++)
+                Console.Write($"{t[i]} ");
+            Console.Write('\n');
+
+            int sum = t.Sum();
+            Console.WriteLine($"sum: {sum}");
+
+            double avg = t.Average();
+            Console.WriteLine($"avg: {avg, 0:0.00}");
+
+            int c = 0;
+            for (int i = 0; i < t.Length; i++)
+            {
+                if (t[i] % 10 == 0) c++;
+            }
+            Console.WriteLine($"0ra végződő: {c} db");
+
+        }
+        private static void Feladat_3_matrix()
+        {
+            int[,] matrix = new int[3, 4];
+
+            matrix[0, 0] = 17;
+            matrix[1, 0] = 12;
+            matrix[2, 0] = 42;
+
+            matrix[1, 3] = 99;
+
+            //Console.WriteLine(matrix.Length);
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write($"{matrix[i, j]} ");
+                }
+                Console.Write('\n');
+            }
+
+            Console.SetCursorPosition(left: 11, top: 3);
+
+
+            int[,,] ter = new int[10, 20, 30];
+        }
         private static void Feladat_3_01()
         {
             string[] nevek = 
@@ -157,7 +340,6 @@ namespace CA220324
                 Console.WriteLine($"{nevek[i]}: {magassagok[i]}");
             }
         }
-
         private static void Feladat_3_00_2()
         {
             int[] t = new int[5];
