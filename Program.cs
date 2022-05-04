@@ -111,13 +111,255 @@ namespace CA220324
 
             //OM: 7
 
-            Feladat_lotto();
+            //Feladat_lotto();
 
             //HF 8, 9, 10, 11, 12
+
+            //--------------------
+
+            //Feladat_4_00();
+
+            //Feladat_4_01_02_03();
+            //Feladat_4_04();
+            //Feladat_4_05();
+            //Feladat_4_06();
+
+            //Feladat_4_09();
+            //Feladat_4_10();
+            //Feladat_4_11_12();
+
+            //Feladat_4_13();
+            //Feladat_4_14();
+
+            //Feladat_4_17();
+            //Feladat_4_18();
+
+            //HF: 7, 8, 15, 16, 19abc, 20, 21, 23, 
 
             Console.ReadKey();
         }
 
+        private static void Feladat_4_18()
+        {
+            string karakterek = "abcdefgh1234567890_";
+            string jelszo = "";
+            for (int i = 0; i < 8; i++)
+            {
+                jelszo += karakterek[rnd.Next(karakterek.Length)];
+            }
+            Console.WriteLine(jelszo);
+        }
+
+        private static void Feladat_4_17()
+        {
+            Console.Write("első szó: ");
+            char[] a = Console.ReadLine().ToLower().ToCharArray();
+            Console.Write("második szó: ");
+            char[] b = Console.ReadLine().ToLower().ToCharArray();
+
+            Array.Sort(a);
+            Array.Sort(b);
+
+            string aSorban = new string(a);
+            string bSorban = new string(b);
+
+            if (aSorban == bSorban) Console.WriteLine("anagramma");
+            else Console.WriteLine("nem anagramma");
+            
+            
+        }
+
+        private static void Feladat_4_14()
+        {
+            Console.Write("írj be egy tetszőleges szót: ");
+            string szo = Console.ReadLine();
+
+            string ekezetesBetuk =     "áÁéÉíÍóÓöÖőŐúÚüÜűŰ";
+            string ekezetMentesBetuk = "aAeEiIoOoOoOuUuUuU";
+
+            string ekezetMentesSzo = "";
+            for (int i = 0; i < szo.Length; i++)
+            {
+                if (ekezetesBetuk.Contains(szo[i]))
+                {
+                    int betuIndex = ekezetesBetuk.IndexOf(szo[i]);
+                    ekezetMentesSzo += ekezetMentesBetuk[betuIndex];
+                    //ekezetMentesSzo +=
+                    //    ekezetMentesBetuk[ekezetesBetuk.IndexOf(szo[i])];
+                }
+                else
+                {
+                    ekezetMentesSzo += szo[i];
+                }
+            }
+
+            //string ekezetMentesSzo2 = "";
+            //for (int i = 0; i < szo.Length; i++)
+            //    ekezetMentesSzo2 += ekezetesBetuk.Contains(szo[i])
+            //        ? ekezetMentesBetuk[ekezetesBetuk.IndexOf(szo[i])]
+            //        : szo[i];
+
+            Console.WriteLine(ekezetMentesSzo);
+            //Console.WriteLine(ekezetMentesSzo2);
+        }
+
+        private static void Feladat_4_13()
+        {
+            Console.Write("írj be egy tetszőleges szót: ");
+            string szo = Console.ReadLine().ToLower();
+
+            string maganhangzok = "aáeéiíoóöőuúüű";
+
+            int mghkSzama = 0;
+            for (int i = 0; i < szo.Length; i++)
+            {
+                if (maganhangzok.Contains(szo[i]))
+                    mghkSzama++;
+            }
+            Console.WriteLine($"magánhangzók száma a szóban:  {mghkSzama}");
+        }
+
+        private static void Feladat_4_11_12()
+        {
+            Console.Write("írj be egy tetszőleges szót: ");
+            string szo = Console.ReadLine().ToLower();
+
+            bool vanJ = szo.Contains('j');
+            bool vanLY = szo.Contains("ly");
+
+            if (vanJ) Console.WriteLine("van benne J");
+            else Console.WriteLine("nincs benne J");
+            if (vanLY) Console.WriteLine("van benne LY");
+            else Console.WriteLine("nincs benne LY");
+        }
+
+        private static void Feladat_4_10()
+        {
+            string szo = "bableves";
+            string eleje = szo.Substring(0, 1);
+            string nagyEleje = eleje.ToUpper();
+            string nagyKezdobetus = nagyEleje + szo.Substring(1);
+            Console.WriteLine(nagyKezdobetus);
+
+            for (int i = 0; i < szo.Length; i++)
+            {
+                if (i == 0)
+                    Console.Write(szo[i].ToString().ToUpper());
+                else Console.Write(szo[i]);
+            }
+
+            string ujSzo = "";
+            for (int i = 0; i < szo.Length; i++)
+            {
+                if (i == 0) ujSzo += szo[i].ToString().ToUpper();
+                else ujSzo += szo[i];
+            }
+
+            Console.Write("\n");
+            Console.WriteLine(ujSzo);
+        }
+
+        private static void Feladat_4_09()
+        {
+            Console.Write("írj be egy tetszőleges szót: ");
+            string szo = Console.ReadLine();
+
+            string kisbetus = szo.ToLower();
+            string nagybetus = szo.ToUpper();
+
+            Console.WriteLine(kisbetus);
+            Console.WriteLine(nagybetus);
+        }
+
+        private static void Feladat_4_06()
+        {
+            Console.Write("írj be egy tetszőleges szót: ");
+            string szo = Console.ReadLine();
+            //szo = szo.ToLower();
+            
+            int c = 0;
+            for (int i = 0; i < szo.Length; i++)
+            {
+                //if (szo[i] == 'e' || szo[i] == 'E') c++;
+                //if (szo[i] == 'e') c++;
+                if ("Ee".Contains(szo[i])) c++;
+            }
+            Console.WriteLine($"ebben a szóban {c} db 'e' betű van");
+        }
+
+        private static void Feladat_4_05()
+        {
+            Console.Write("írj be egy tetszőleges szót: ");
+            string szo = Console.ReadLine();
+
+            for (int i = szo.Length - 1; i >= 0; i--)
+            {
+                Console.Write(szo[i]);
+            }
+            Console.WriteLine("\n--------");
+
+            char[] charTomb = szo.ToCharArray();
+            Array.Reverse(charTomb);
+            string forditott = new string(charTomb);
+            Console.WriteLine(forditott);
+        }
+
+        private static void Feladat_4_04()
+        {
+            Console.Write("írj be egy tetszőleges szót: ");
+            string szo = Console.ReadLine();
+
+            for (int i = 0; i < szo.Length + 2; i++)
+                Console.Write("*");
+
+            Console.Write("\n");
+            Console.WriteLine($"*{szo}*");
+
+            for (int i = 0; i < szo.Length + 2; i++)
+                Console.Write("*");
+
+            Console.Write("\n");
+        }
+
+        private static void Feladat_4_01_02_03()
+        {
+            string nev = "Juhász Zoltán";
+            for (int i = 0; i < nev.Length; i++)
+            {
+                Console.Write($"{nev[i]} ");
+            }
+            Console.WriteLine("\n----------------");
+            for (int i = 0; i < nev.Length; i++)
+            {
+                Console.WriteLine(nev[i]);
+            }
+            Console.WriteLine("----------------");
+            for (int i = 0; i < nev.Length; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    Console.Write(" ");
+                }
+                Console.WriteLine(nev[i]);
+            }
+
+        }
+        private static void Feladat_4_00()
+        {
+            //annak ellenére hogy a string C# nyelven referencia-típus
+            //az értékadás úgy működik "mintha érték-típus lenne"
+            string nev = "Juhász Zoltán";
+            string masik = nev;
+            nev = "Bobó";
+            Console.WriteLine(masik);
+
+            //de továbbra is igaz, hogy a class alapú típusokű
+            //MINDIG referencia-típusok
+            int[] t = { 1, 2, 3 };
+            int[] v = t;
+            t[0] = 200;
+            Console.WriteLine(v[0]);
+        }
         private static void Feladat_lotto()
         {
             int[] tippek = new int[5];
@@ -182,7 +424,6 @@ namespace CA220324
                 Console.WriteLine("grat!");
             else Console.WriteLine(":(");
         }
-
         private static void Feladat_3_6()
         {
             int[] t = new int[50];
