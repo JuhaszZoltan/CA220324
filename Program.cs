@@ -134,9 +134,120 @@ namespace CA220324
             //Feladat_4_17();
             //Feladat_4_18();
 
-            //HF: 7, 8, 15, 16, 19abc, 20, 21, 23, 
+            //HF: 7, 8, 15, 16, 19abc, 20, 21, 23
+
+            Feladat_4_prgt_1();
+
+            //HF 1e, 
 
             Console.ReadKey();
+        }
+
+        private static void Feladat_4_prgt_1()
+        {
+            int[] t = new int[200];
+            for (int i = 0; i < t.Length; i++)
+            {
+                t[i] = rnd.Next(10, 100);
+            }
+            for (int i = 0; i < t.Length; i++)
+            {
+                Console.Write($"{t[i]} ");
+                if ((i + 1) % 20 == 0) Console.Write("\n");
+            }
+            //átlag
+            int sum = 0;
+            for (int i = 0; i < t.Length; i++)
+            {
+                sum += t[i];
+            }
+            double avg = sum / (double)t.Length;
+            Console.WriteLine($"elemek átlaga: {avg}");
+
+            //megszámlálás
+            int gtavg = 0;
+            for (int i = 0; i < t.Length; i++)
+            {
+                if (t[i] > avg)
+                {
+                    gtavg++;
+                }
+            }
+            Console.WriteLine($"átlagnál nagyobb elemek száma: {gtavg}");
+
+            //megszámlálás_2
+            int divby10 = 0;
+            for (int i = 0; i < t.Length; i++)
+            {
+                if (t[i] % 10 == 0)
+                {
+                    divby10++;
+                }
+            }
+            Console.WriteLine($"0ra végződő elemek száma: {divby10}");
+
+            int maxi = 0;
+            for (int i = 1; i < t.Length; i++)
+            {
+                if (t[i] > t[maxi])
+                {
+                    maxi = i;
+                }
+            }
+            int maxValue = t[maxi];
+            Console.WriteLine($"a legnagyobb elem a(z): {t[maxi]}");
+            int comv = 0;
+            for (int i = 0; i < t.Length; i++)
+            {
+                if (t[i] == maxValue)
+                {
+                    comv++;
+                }
+            }
+            Console.WriteLine($"a {maxValue} összesen {comv}x szerepel");
+
+            //HF 1.e, 2.abcdef, 3, 4, 5
+
+            int maxdb10v = -1;
+            for (int i = 0; i < t.Length; i++)
+            {
+                if (t[i] % 10 == 0 && t[i] > maxdb10v)
+                {
+                    maxdb10v = t[i];
+                }
+            }
+
+            if (maxdb10v == -1)
+            {
+                Console.WriteLine($"nincs 0ra végződő szám a vektorban");
+            }
+            else
+            {
+                Console.WriteLine($"a legnagyobb 0ra végződő szám {maxdb10v}");
+            }
+
+            string mp15 = "";
+
+            for (int i = 0; i < t.Length; i++)
+            {
+                if (t[i] % 15 == 0)
+                {
+                    if (!mp15.Contains($"{t[i]}"))
+                    {
+                        mp15 += $"{t[i]}, ";
+                    }
+                }
+            }
+            if (mp15.Length > 0)
+            {
+                Console.WriteLine($"szerepel a vektorban 15 többszöröse!");
+                Console.WriteLine($"ezek azok: {mp15}");
+            }
+            else
+            {
+                Console.WriteLine($"nincs a vektorban 15 többszöröse");
+            }
+
         }
 
         private static void Feladat_4_18()
