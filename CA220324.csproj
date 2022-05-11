@@ -48,11 +48,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Spec\bev_prog_prezi.pdf" />
     <None Include="Spec\feladatok1.pdf" />
     <None Include="Spec\feladatok2.pdf" />
     <None Include="Spec\feladatok3.pdf" />
     <None Include="Spec\feladatok4.pdf" />
+    <None Include="Spec\feladatok5.pdf" />
+    <None Include="Spec\szovegkezeles_metodusok.pdf" />
     <None Include="Spec\tombok_prezi.pdf" />
+    <None Include="Spec\valtozok_prezi_v2.pdf" />
+    <None Include="Spec\vezerlo_szerkezetek_prezi_v3.pdf" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

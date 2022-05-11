@@ -136,11 +136,165 @@ namespace CA220324
 
             //HF: 7, 8, 15, 16, 19abc, 20, 21, 23
 
-            Feladat_4_prgt_1();
+            //Feladat_4_prgt_1();
 
-            //HF 1e, 
+            //HF: 1.e, 2.abcdef, 3, 4, 5
+
+            //Feladat_5_02();
+
+            //SZ: 3
+
+            //Feladat_5_04();
+
+            //HF: 4.2...
+
+            Feladat_5_01();
 
             Console.ReadKey();
+        }
+
+        private static void Feladat_5_01()
+        {
+            Console.CursorVisible = false;
+
+            //int x = 0;
+            //while (x < 50)
+            //{
+            //    x += rnd.Next(1, 4);
+            //    Console.Write($"{x}->");
+            //}
+            //Console.Write('\n');
+
+            int xwin = 0;
+            int ywin = 0;
+
+            for (int i = 0; i < 10; i++)
+            {
+                int x = 0;
+                int y = 0;
+
+                while (x < 50 && y < 50)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"{i + 1,2}. futam:");
+
+                    x += rnd.Next(1, 4);
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.SetCursorPosition(x, 1);
+                    Console.Write("*");
+
+                    y += rnd.Next(1, 4);
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.SetCursorPosition(y, 3);
+                    Console.WriteLine("@");
+
+                    Thread.Sleep(250);
+                    Console.ResetColor();
+                }
+
+                if (x == y) Console.WriteLine("döntetlen");
+                else if (x > y)
+                {
+                    Console.WriteLine("* győzött");
+                    xwin++;
+                }
+                else
+                {
+                    Console.WriteLine("@ győzött");
+                    ywin++;
+                }
+
+                Console.WriteLine("\n\nNomj ENTERT-t a következő futam megkezdéséhez!");
+                //ConsoleKey ck;
+                //do
+                //{
+                //    ck = Console.ReadKey(true).Key;
+                //} while (ck != ConsoleKey.Enter);
+
+                while (Console.ReadKey(true).Key != ConsoleKey.Enter) ;
+            }
+
+            Console.Clear();
+
+            Console.WriteLine($"* győzelmei: {xwin}");
+            Console.WriteLine($"@ győzelmei: {ywin}");
+
+            Console.WriteLine("a verseny eredménye:");
+            if (xwin == ywin) Console.WriteLine("DÖNTETLEN");
+            else if (xwin > ywin) Console.WriteLine("* GYŐZÖTT!");
+            else Console.WriteLine("@ győzött");
+        }
+
+        private static void Feladat_5_04()
+        {
+            //4.1
+            //int x;
+            //do
+            //{
+            //    Console.Write("írj be egy pozitív számot: ");
+            //    x = int.Parse(Console.ReadLine());
+            //    if (x <= 0) Console.WriteLine($"az {x} nem pozitív szám");
+            //} while (x <= 0);
+            //Console.WriteLine("thx, a programnak vége!");
+
+            //while alternatív megoldás:
+
+            int x = -1;
+            while (x <= 0)
+            {
+                Console.Write("írj be egy pozitív számot: ");
+                x = int.Parse(Console.ReadLine());
+                if (x <= 0) Console.WriteLine($"a(z) {x} nem pozitív szám");
+            }
+            Console.WriteLine("thx a programnak vége");
+        }
+
+        private static void Feladat_5_02()
+        {
+            int[] t = new int[10];
+            for (int j = 0; j < t.Length; j++)
+            {
+                t[j] = rnd.Next(8, 81);
+                Console.Write($"{t[j], 2}, ");
+                if((j + 1) % 20 == 0) Console.Write('\n');
+            }
+            Console.Write('\n');
+            //van-e 10 eves és hanyadik?
+            //[az ELSŐ feltételnek megfelelő játékos a kérdés minden további feladatnál]
+            int i = 0;
+            while (i < t.Length && t[i] != 10) i++;
+            if (i < t.Length)
+                Console.WriteLine(
+                    $"van 10 éves játékos\n" +
+                    $"{i + 1}. a ranglistán");
+            else Console.WriteLine("nincs 10 éves a ranglistán");
+
+            i = 0;
+            while (i < t.Length && t[i] >= 14) i++;
+            if (i < t.Length) Console.WriteLine("van kiskorú a ranglistán");
+            else Console.WriteLine("nincs kiskorú a ranglistán");
+
+            i = 0;
+            while (i < t.Length && (t[i] < 14 || t[i] >= 18)) i++;
+            if (i < t.Length) Console.WriteLine("van fiatalkorú a ranglistán");
+            else Console.WriteLine("nincs fiatalkorú a ranglistán");
+
+            i = 0;
+            while (i < t.Length && t[i] > 12) i++;
+            if (i < t.Length) Console.WriteLine("nem minden játékos múlt el 12 éves");
+            else Console.WriteLine("minden játékos elmúlt 12 éves");
+
+            int sum18p = 0;
+            int co18p = 0;
+            for (int j = 0; j < t.Length; j++)
+            {
+                if (t[i] >= t[i])
+                {
+                    sum18p += t[i];
+                    co18p++;
+                }
+            }
+            Console.WriteLine($"nagykorúak átlagéletkora: {sum18p/(double)co18p}");
         }
 
         private static void Feladat_4_prgt_1()
@@ -205,8 +359,6 @@ namespace CA220324
                 }
             }
             Console.WriteLine($"a {maxValue} összesen {comv}x szerepel");
-
-            //HF 1.e, 2.abcdef, 3, 4, 5
 
             int maxdb10v = -1;
             for (int i = 0; i < t.Length; i++)
