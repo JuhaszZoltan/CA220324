@@ -148,11 +148,97 @@ namespace CA220324
 
             //HF: 4.2...
 
-            Feladat_5_01();
+            //Feladat_5_01();
+
+            //Feladat_5_05();
+
+            //Feladat_5_06();
+
+            //HF: 5.7, 10, 11
+
+            //Feladat_5_08();
 
             Console.ReadKey();
         }
 
+        private static void Feladat_5_08()
+        {
+            int a;
+            int b;
+
+            do
+            {
+                Console.Write("a := ");
+                a = int.Parse(Console.ReadLine());
+            } while (a <= 0);
+
+            do
+            {
+                Console.Write("b := ");
+                b = int.Parse(Console.ReadLine());
+            } while (b - a < 10);
+
+            Console.WriteLine($"[{a}; {b}] intervallum páros számai:");
+            for (int i = a; i <= b; i++)
+                if (i % 2 == 0) Console.Write($"{i} ");
+            Console.Write("\n");
+        }
+        private static void Feladat_5_06()
+        {
+            int pin = 1234;
+            int lehetoseg = 3;
+            bool siker;
+
+            do
+            {
+                Console.Write("írd be a PIN kódodat: ");
+                int proba = int.Parse(Console.ReadLine());
+                siker = proba == pin;
+                if (!siker)
+                {
+                    lehetoseg--;
+                    Console.WriteLine("sikertelen próbálkozás");
+                    if (lehetoseg > 0) 
+                        Console.WriteLine($"{lehetoseg} próbálkozási lehetőséged maradt!");
+                }        
+            } while (lehetoseg > 0 && !siker);
+
+            if (lehetoseg == 0) Console.WriteLine("CSAK a 112 hívható");
+            else Console.WriteLine("sikeresen beléptél!");
+        }
+        private static void Feladat_5_05()
+        {
+            //int gondolt = rnd.Next(1, 51);
+            //int tipp = -1;
+            //while (tipp != gondolt)
+            //{
+            //    Console.Write("szerinted melyik számra gondoltam? ");
+            //    tipp = int.Parse(Console.ReadLine());
+
+            //    if(tipp < gondolt)
+            //        Console.WriteLine("nem, ennél nagygyobbra gondoltam!");
+            //    else if (tipp > gondolt)
+            //        Console.WriteLine("nem ennél kisebbre gondoltam!");
+            //}
+            //Console.WriteLine("igen, eltaláltad!");
+
+            int gondolt = rnd.Next(50) + 1;
+            int tipp;
+            Console.WriteLine("gondoltam egy számra 1 és 50 között.\nTaláld ki!");
+            do
+            {
+                Console.Write("mi a tipped? ");
+                tipp = int.Parse(Console.ReadLine());
+
+                if (tipp < gondolt)
+                    Console.WriteLine("nem, ennél nagygyobbra gondoltam!");
+                else if (tipp > gondolt)
+                    Console.WriteLine("nem, ennél kisebbre gondoltam!");
+
+            } while (tipp != gondolt);
+
+            Console.WriteLine("ja, erre gondoltam, ügyes vagy!");
+        }
         private static void Feladat_5_01()
         {
             Console.CursorVisible = false;
@@ -224,7 +310,6 @@ namespace CA220324
             else if (xwin > ywin) Console.WriteLine("* GYŐZÖTT!");
             else Console.WriteLine("@ győzött");
         }
-
         private static void Feladat_5_04()
         {
             //4.1
@@ -248,7 +333,6 @@ namespace CA220324
             }
             Console.WriteLine("thx a programnak vége");
         }
-
         private static void Feladat_5_02()
         {
             int[] t = new int[10];
@@ -296,7 +380,6 @@ namespace CA220324
             }
             Console.WriteLine($"nagykorúak átlagéletkora: {sum18p/(double)co18p}");
         }
-
         private static void Feladat_4_prgt_1()
         {
             int[] t = new int[200];
@@ -401,7 +484,6 @@ namespace CA220324
             }
 
         }
-
         private static void Feladat_4_18()
         {
             string karakterek = "abcdefgh1234567890_";
