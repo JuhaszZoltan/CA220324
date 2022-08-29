@@ -19,6 +19,8 @@ namespace CA220324
 
         static void Main()
         {
+            //STP
+
             //Feladat_1_00();
             //Feladat_1_01();
             //Feladat_1_03();
