@@ -19,6 +19,9 @@ namespace CA220324
 
         static void Main()
         {
+            //ASD
+
+
             //STP
 
             //Feladat_1_00();
